@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
+  before_action :authenticate_request, except: :create
 
   def create
     @user = User.new(user_params)
     if @user.save
-      render json: @user, status: :created
+      token = AuthenticateUser.new(@user.username, @user.password).generate_token
+      render json: { token: token }, status: :created
     else
       render json: {
         errors: @user.errors.full_messages
@@ -15,7 +17,7 @@ class UsersController < ApplicationController
     if user
       render json: user
     else
-      render json: { error: 'User not found' }, status: :not_found
+      not_found
     end
   end
 
