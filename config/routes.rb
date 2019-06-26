@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   post 'users/signup', to: 'users#create'
   get 'users/:id', to: 'users#show'
+
+  get 'users/:id/repos', to: 'repositories#index'
 end
