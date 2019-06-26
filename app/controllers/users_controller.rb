@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if user
       render json: user
     else
-      render json: { error: 'User not found' }, status: :not_found
+      not_found
     end
   end
 
