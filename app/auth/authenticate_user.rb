@@ -15,5 +15,6 @@ class AuthenticateUser
   def user
     user ||= User.find_by(username: username)
     return user if user && user.authenticate(password)
+    { error: 'Invalid credentials' }
   end
 end

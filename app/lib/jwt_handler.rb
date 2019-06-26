@@ -9,7 +9,7 @@ class JwtHandler
   def self.decode(token)
     decoded_token = JWT.decode(token, HMAC_SECRET, true, algorithm: 'HS256')[0]
     HashWithIndifferentAccess.new(decoded_token)
-  rescue JWT::ExpiredSignature, JWT::VerificationError => e
-    e.to_json
+  rescue JWT::DecodeError => e
+    { error: JSON.parse(e.to_json) }
   end
 end
