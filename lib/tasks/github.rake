@@ -9,7 +9,7 @@ namespace :github do
     payload = {
       # issued at time
       iat: Time.now.to_i,
-      exp: 5.hours.from_now.to_i,
+      exp: Time.now.to_i + (10 * 60),
       # GitHub App's identifier
       iss: ENV['GITHUB_APP_ID']
     }
