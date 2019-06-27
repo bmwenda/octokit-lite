@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   post 'users/signup', to: 'users#create'
   get 'users/:id', to: 'users#show'
 
-  get 'users/:id/repos', to: 'repositories#index'
+  get 'users/:user_id/repos', to: 'repositories#index'
+  post 'users/:user_id/repos', to: 'repositories#create'
+  get 'users/:user_id/repos/:id', to: 'repositories#show'
+  delete 'users/:user_id/repos/:id', to: 'repositories#destroy'
 end

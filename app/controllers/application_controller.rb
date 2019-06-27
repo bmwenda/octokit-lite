@@ -6,11 +6,11 @@ class ApplicationController < ActionController::API
   end
 
   def not_found
-    render json: { error: 'not found' }, status: :not_found
+    render json: { message: 'not found' }, status: :not_found
   end
 
   def unauthorized
-    render json: { error: 'Invalid credentials' }, status: :unauthorized
+    render json: { message: 'Invalid credentials' }, status: :unauthorized
   end
 
   def authenticate_request
